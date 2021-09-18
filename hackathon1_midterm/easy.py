@@ -21,5 +21,4 @@ def alpha_num(sentence):
         pass
       else :
         result.append(i)
-    # match = re.match("^[ABCDEFGHJKLM]*$", i)
   return(result)
