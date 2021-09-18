@@ -36,8 +36,22 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  pass
-
+  result=[]
+  with open(filename, 'r') as file_again:
+      for i in file_again:
+        year = re.search("Popularity in (.*?)<",i)
+        baby = re.search("<td>(.*?)</td><td>(.*?)</td><td>(.*?)</td>",i)
+        if year :
+          result_year = year.group(1)
+        if baby :
+          boy = baby.group(2)+" "+baby.group(1)
+          girl = baby.group(3)+" "+baby.group(1)
+          result.append(boy)
+          result.append(girl)
+          result.sort()
+      result1= [result_year]
+      result1.extend(result)
+  return (result1)
 
 def main():
   # Chương trình này có thể nhận đối số đầu vào là một hoặc nhiều tên file
@@ -54,6 +68,18 @@ def main():
     del args[0]
 
   # +++your code here+++
+  if len(args)>0 and summary == False  :
+    for file in args:
+      print(extract_names(file))
+  elif len(args)>0 and summary == True :
+    f = open('summaryfile.txt', 'w')
+    for file in args:
+      f.write(str(extract_names(file)))
+    
+  else :
+    sys.exit(1)
+
+
   # Với mỗi tên file, gọi hàm extract_names ở trên và in kết quả ra stdout
   # hoặc viết kết quả ra file summary (nếu có input --summaryfile).
   

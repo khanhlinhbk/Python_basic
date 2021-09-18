@@ -2,7 +2,7 @@ import re
 def anagram_number(number):
     str1=str(number)
     reverse= str1[::-1]
-    if reverse == str1 and re.match("^\d*$",str1):
+    if reverse == str1 and re.match("^\d*$",str1): 
      return(True)
     return(False)
 
@@ -19,3 +19,4 @@ def roman_to_int(s):
             num+=roman[s[i]]
             i+=1
     return(num)
+    
