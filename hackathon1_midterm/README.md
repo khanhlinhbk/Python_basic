@@ -1,3 +1,5 @@
+câu lệnh chạy :
+bài cuối: python babynames.py --summaryfile baby1998.txt
 **Hướng dẫn chung.**
 * Code phần Easy trong file easy.py
 * Code phần Medium trong file medium.py
