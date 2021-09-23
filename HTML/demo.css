@@ -1,0 +1,17 @@
+.w3-bar-item{
+    padding-left:18px!important;padding-right:18px!important;
+    float: left;
+    width: auto;
+}
+.w3-button:hover {
+    color: #000!important;
+    background-color: #ccc!important;
+}
+a:active {
+    color: #059862;
+}
+div {
+    width: 100%;
+    overflow: hidden;
+     height: 44px;
+}

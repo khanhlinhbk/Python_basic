@@ -41,6 +41,7 @@ def extract_names(filename):
       for i in file_again:
         year = re.search("Popularity in (.*?)<",i)
         baby = re.search("<td>(.*?)</td><td>(.*?)</td><td>(.*?)</td>",i)
+        # <td>904</td><td>Markel</td><td>Rhianna</td>
         if year :
           result_year = year.group(1)
         if baby :
