@@ -35,13 +35,13 @@ def helper(filename):
   contents = ""
   with open(filename, 'r') as file_again:
       for i in file_again:
-          contents+= i.rstrip("\n\.;?:!,")
+          contents+= i.replace(".","").replace(",","").replace("?","").replace("!","").replace("-","").replace(":","").replace('"','')
       content = contents.split()
       for i in range(len(content)) :
         content[i]= content[i].lower()
   return(content)
 def print_words(filename):
-  content = helper(filename=filename)
+  content = helper(filename)
   result = []
   for i in content:
     result.append(i+" "+str(content.count(i)))
@@ -52,21 +52,14 @@ def print_words(filename):
     print(i)
 
 def print_top(filename):
-  content = helper(filename=filename)
+  content = helper(filename)
   result ={}
   for i in content:
     result[i]=str(content.count(i))
-  # for i in range(len(result)):
-  #   result[i]=result[i][::-1]
-  # result.sort()
-  # if len(result)> 20 :
-  #   result = result[-20:-1]
-  # for i in result.values():
   list1=list(result.values())
   for i in range(len(list1)):
     list1[i]=int(list1[i])
   list1= sorted(list1)[-20:-1]
-  result1={}
   list2=[]
   for j in list1:
     for i in list(result.keys()):
