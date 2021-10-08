@@ -1,3 +1,4 @@
+
 class Fraction:
     def __init__(self,nr,dr) :
         if(dr>0):
@@ -21,5 +22,13 @@ class Fraction:
             self._nr=nr
     def fr(self):
         return (str(self.nr)+"/"+str(self.dr))
-a=Fraction(5,-4)
-print(a.fr())
+    def gcd(self) :
+        while self.dr != 0:
+            m = self.nr % self.dr;
+            self.nr = self.dr;
+            self.dr = m;
+        return self.nr;
+
+    
+a=Fraction(12,-6)
+print(a.gcd())
