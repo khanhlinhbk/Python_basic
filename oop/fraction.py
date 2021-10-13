@@ -22,13 +22,32 @@ class Fraction:
             self._nr=nr
     def fr(self):
         return (str(self.nr)+"/"+str(self.dr))
-    def gcd(self) :
+    def hcf(self) :
         while self.dr != 0:
-            m = self.nr % self.dr;
-            self.nr = self.dr;
-            self.dr = m;
-        return self.nr;
-
+            m = self.nr % self.dr
+            self.nr = self.dr
+            self.dr = m
+        return self.nr
+    def reduce(self):
+        x = self.nr
+        y = self.dr
+        while self.dr != 0:
+            m = self.nr % self.dr
+            self.nr = self.dr
+            self.dr = m
+        if(int(y/self.nr) == 1):
+            return str(int(x/self.nr))
+        return (str(int(x/self.nr))+"/"+str(int(y/self.nr)))
+        
+    def __add__(self,other):
+        if isinstance(other, int) or isinstance(other, float)  :
+            z = self.dr*other+self.nr
+            return (str(z) +"/" +str(self.dr)) 
+        elif isinstance(other, Fraction):
+            z = self.dr*other.nr+ self.nr*other.dr
+            return (str(z)+"/"+ str(other.dr*self.dr))
+        else : return("Nhập đúng định dạng")
     
 a=Fraction(12,-6)
-print(a.gcd())
+b=1.5
+print(a+b)
