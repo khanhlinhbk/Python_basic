@@ -1,7 +1,7 @@
 from card import Card
 import random
 class Deck:
-    ranks= [1,2,3,4,5,6,7,8,9]
+    ranks= [2,3,4,5,6,7,8,9,1]
     suits= ['♠', '♣', '♦', '♥']
     '''
     Class đại diện cho bộ bài, bao gồm 36 lá
@@ -21,4 +21,4 @@ class Deck:
 
     def deal_card(self, index_card):
         '''Rút một lá bài từ bộ bài'''
-        return self.cards[index_card]
+        return self.cards[int(index_card)]

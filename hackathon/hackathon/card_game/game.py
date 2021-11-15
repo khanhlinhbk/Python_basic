@@ -1,5 +1,6 @@
 from deck import Deck
 from player import Player
+from card import Card
 import os
 clear = lambda: os.system('cls')
 class Game:
@@ -14,7 +15,7 @@ class Game:
     def __init__(self):
         self.players = []
         self.deck = Deck()
-
+        self.deck.build()
 
     def setup(self):
         '''Khởi tạo trò chơi, nhập số lượng và lưu thông tin người chơi'''
@@ -59,10 +60,13 @@ class Game:
         
         number_player = len(self.players)
         for player in self.players:
-            player.add_card()
-        
+            player.add_card(self.deck.deal_card(self.players.index[player]))
+            player.add_card(self.deck.deal_card(self.players.index[player]+number_player))
+            player.add_card(self.deck.deal_card(self.players.index[player]+number_player*2))
+        print("Đã chia bài, xuống tiền đi")
 
     def flip_card(self):
         '''Lật bài tất cả người chơi, thông báo người chiến thắng'''
-        pass
+         for player in self.players:
+             player.point
     
