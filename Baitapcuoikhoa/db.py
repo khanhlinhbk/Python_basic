@@ -3,7 +3,7 @@ db_config = {
     "host": "localhost",
     "user": "root",
     "password": "",
-    "database": "data123",
+    "database": "data_post",
     "cursorclass": cursors.DictCursor
 }
 con = connect(**db_config)
@@ -15,14 +15,10 @@ def get_post():
     return data
 
 def add_post(time, title, content):
-    sql='''INSERT INTO data1 VALUES (%s, %s,%s)'''
+    sql='''INSERT INTO data1(time, title, content) VALUES (%s, %s,%s)'''
     cur.execute(sql,(time, title, content))
     con.commit()
-def edit_post1(time, title, content):
-    sql='''UPDATE data1 SET time = %s, title = %s, content = %s'''
-    cur.execute(sql,(time, title, content))
+def edit_post1(b, time, title, content):
+    sql='''UPDATE data1 SET time = %s, title = %s, content = %s WHERE id=%s'''
+    cur.execute(sql,(time, title, content, b))
     con.commit()
-    print(time)
-    print(title)
-    print(content)
-    print("cuong")

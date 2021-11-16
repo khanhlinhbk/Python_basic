@@ -79,7 +79,7 @@ def edit_post(post_id):
         "title":title,
         "content": content
     } 
-    edit_post1(time, title, content)
+    edit_post1(b,time, title, content)
     return redirect("/", code=302)
 
 if __name__== "__main__":
