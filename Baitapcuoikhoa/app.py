@@ -2,6 +2,8 @@ from flask import Flask, render_template, Response, request, redirect
 from db import edit_post1
 from db import add_post, get_post
 from datetime import datetime
+from docx import Document
+from docx.shared import Cm
 app= Flask(__name__)
 
 post_base= get_post()
@@ -10,30 +12,22 @@ a=0
 for p in post_base:
     a+=1
     post[str(a)] = p
+doc = Document()
+@app.route("/resignation-letter")
+def regis():
+    return render_template("resignation-letter.html")
+@app.route("/resignation-letter", methods=["POST"])
+def regiss():
+    fullname = request.form["fullname"]
+    reason = request.form["reason"]
+    doc.add_heading('Thông tin bản thân...', level=2)
+    para= doc.add_paragraph("Tên tôi là ")
+    para.add_run(fullname).bold = True
+    para.add_run(". Mục đích tôi viết bức thư này là ")
+    para.add_run(reason).italic = True
+    doc.save('Baitapcuoikhoa/cv1.docx')
+    return redirect("/resignation-letter", code=302)
 
-# post = {
-#     "1": {
-#         "time":"Post at: 2021-11-21 15:34:36",
-#         "title":"mypost1",
-#         "content": "Where I can share everything in my life"
-#     },
-#     "2":{
-#         "time":"Post at: 2021-11-21 15:34:36",
-#         "title":"my post2",
-#         "content": "Where I can share everything in my life"
-#     },
-#      "3": {
-#         "time":"Post at: 2021-11-21 15:34:36",
-#         "title":"my_post3",
-#         "content": "Where I can share everything in my life"
-#     },
-#     "4":{
-#         "time":"Post at: 2021-11-21 15:34:36",
-#         "title":"my_post4",
-#         "content": "Where I can share everything in my life"
-#     }
-
-# }
 
 @app.route("/about")
 def about():
