@@ -5,6 +5,7 @@ class Card:
 
     Mỗi lá bài bao gồm rank ('A', 2, 3, 4, 5, 6, 7, 8, 9) và suit ('♠', '♣', '♦', '♥')
     '''
+    ranks=[ 2, 3, 4, 5, 6, 7, 8, 9,1]
     suits=['♠', '♣', '♦', '♥']
     def __init__(self, rank, suit):
         self.rank = rank
@@ -14,5 +15,5 @@ class Card:
         return (str(self.rank)+ self.suit)
 
     def __gt__(self, other):
-        return self.rank == other.rank if Card.suits.index[self.suits]>Card.suits.index[other.suits] else self.rank > other.rank
-        
+         return Card.ranks.index(self.rank)==Card.ranks.index(other.rank) if Card.suits.index(self.suit)>Card.suits.index(other.suit) else Card.ranks.index(self.rank)>Card.ranks.index(other.rank)
+       

@@ -1,4 +1,4 @@
-
+from card import Card
 class Player:
     '''
     Class đại diện cho mỗi người chơi
@@ -40,5 +40,5 @@ class Player:
         self.cards = []
     def flip_card(self):
         '''Lật bài, hiển thị các lá bài'''
-        print(self.cards)
+        return self.cards
    
